@@ -1,8 +1,6 @@
 package com.kenlhk.notekeeper.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,6 +23,9 @@ public class Note {
 
     @OneToMany (fetch = FetchType.EAGER)
     private Set<Tag> tags;
+
+    @OneToOne (fetch = FetchType.EAGER)
+    private User user;
 
     public Note(){
         this.createdAt = LocalDateTime.now();
