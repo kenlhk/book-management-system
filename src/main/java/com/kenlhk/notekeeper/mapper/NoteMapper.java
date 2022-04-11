@@ -15,6 +15,6 @@ public class NoteMapper {
     private final NoteService noteService;
 
     public List<NoteResponse> findAllNotes(){
-        return commonMapper.convertToResponseList(noteService.findAllNotes(), NoteResponse.class);
+        return commonMapper.map(noteService.findAllNotes(), NoteResponse.class);
     }
 }

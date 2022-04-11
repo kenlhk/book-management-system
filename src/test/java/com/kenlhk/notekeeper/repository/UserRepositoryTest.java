@@ -23,13 +23,20 @@ public class UserRepositoryTest {
     @Test
     public void createUser(){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode("test12345");
+        String encodedPassword1 = passwordEncoder.encode("test12345");
+        String encodedPassword2 = passwordEncoder.encode("test67890");
 
-        User user = new User("test@test.com", encodedPassword);
-        User savedUser = userRepository.save(user);
+        User user1 = new User("tester1", encodedPassword1, "test1@test.com");
+        User savedUser1 = userRepository.save(user1);
 
-        assertNotNull(savedUser);
-        assertTrue(savedUser.getId() > 0);
+        User user2 = new User("tester2", encodedPassword2, "test2@test.com");
+        User savedUser2 = userRepository.save(user2);
+
+        assertNotNull(savedUser1);
+        assertTrue(savedUser1.getId() > 0);
+
+        assertNotNull(savedUser2);
+        assertTrue(savedUser2.getId() > 0);
 
     }
 }

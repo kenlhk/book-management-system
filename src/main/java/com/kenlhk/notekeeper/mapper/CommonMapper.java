@@ -13,13 +13,13 @@ public class CommonMapper {
 
     private final ModelMapper modelMapper;
 
-    <T, S> S convertToResponse(T data, Class<S> type){
+    <T, S> S map(T data, Class<S> type){
         return modelMapper.map(data, type);
     }
 
-    <T, S> List<S> convertToResponseList(List<T> list, Class<S> type){
+    <T, S> List<S> map(List<T> list, Class<S> type){
         return list.stream()
-                .map(item -> convertToResponse(item, type))
+                .map(item -> map(item, type))
                 .collect(Collectors.toList());
     }
 }

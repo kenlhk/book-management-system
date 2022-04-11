@@ -9,7 +9,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("5")
+@DiscriminatorValue("misc")
 @Data
 public class Misc extends Source {
 }
