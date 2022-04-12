@@ -35,7 +35,7 @@ class AuthenticationServiceImplTest {
 
         assertNotNull(authenticationService.register(user, PASSWORD1));
         verify(userRepository, times(1)).save(user);
-        verify(jwtProvider, times(1)).createToken(user);
+        verify(jwtProvider, times(1)).generateToken(user);
     }
 
     @Test
@@ -46,6 +46,6 @@ class AuthenticationServiceImplTest {
 
         when(userRepository.findByUsername(user.getUsername())).thenReturn(Optional.of(user));
         assertNotNull(authenticationService.login(user));
-        verify(jwtProvider, times(1)).createToken(user);
+        verify(jwtProvider, times(1)).generateToken(user);
     }
 }

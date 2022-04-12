@@ -7,5 +7,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EmailException extends RuntimeException{
 
-    private final String emailError;
+    private final String message;
 }

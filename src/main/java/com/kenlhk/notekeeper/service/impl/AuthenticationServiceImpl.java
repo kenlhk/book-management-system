@@ -8,6 +8,8 @@ import com.kenlhk.notekeeper.repository.UserRepository;
 import com.kenlhk.notekeeper.security.JwtProvider;
 import com.kenlhk.notekeeper.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserRepository userRepository;
     private final JwtProvider jwtProvider;
     private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
 
     @Override
     public Map<String, String> register(User user, String password2) {
@@ -39,7 +42,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 
-        String token = jwtProvider.createToken(user);
+        String token = jwtProvider.generateToken(user);
         Map<String, String> credentials = new HashMap<>();
         credentials.put("username", user.getUsername());
         credentials.put("token", token);
@@ -49,15 +52,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public Map<String, String> login(User user) {
-
-        userRepository.findByUsername(user.getUsername())
-                .orElseThrow(() -> new UserException("User does not exist."));
-
-        String token = jwtProvider.createToken(user);
-        Map<String, String> credentials = new HashMap<>();
-        credentials.put("username", user.getUsername());
-        credentials.put("token", token);
-
-        return credentials;
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+            userRepository.findByUsername(user.getUsername())
+                    .orElseThrow(() -> new UserException("User does not exist."));
+            String token = jwtProvider.generateToken(user);
+            Map<String, String> credentials = new HashMap<>();
+            credentials.put("username", user.getUsername());
+            credentials.put("token", token);
+            return credentials;
+        } catch (Exception e){
+            throw new UserException("Username or password invalid.");
+        }
     }
 }
