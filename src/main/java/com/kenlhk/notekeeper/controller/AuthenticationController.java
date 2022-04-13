@@ -2,7 +2,7 @@ package com.kenlhk.notekeeper.controller;
 
 import com.kenlhk.notekeeper.dto.authentication.LoginRequest;
 import com.kenlhk.notekeeper.dto.authentication.RegisterRequest;
-import com.kenlhk.notekeeper.dto.authentication.AuthResponse;
+import com.kenlhk.notekeeper.dto.authentication.AuthenticationResponse;
 import com.kenlhk.notekeeper.mapper.AuthenticationMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +21,12 @@ public class AuthenticationController {
     private final AuthenticationMapper authenticationMapper;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request){
+    public ResponseEntity<AuthenticationResponse> register(@Valid @RequestBody RegisterRequest request){
         return ResponseEntity.ok(authenticationMapper.register(request));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> register(@Valid @RequestBody LoginRequest request){
+    public ResponseEntity<AuthenticationResponse> register(@Valid @RequestBody LoginRequest request){
         return ResponseEntity.ok(authenticationMapper.login(request));
     }
 }

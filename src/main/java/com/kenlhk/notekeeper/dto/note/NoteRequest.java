@@ -4,16 +4,12 @@ import com.kenlhk.notekeeper.domain.Source;
 import com.kenlhk.notekeeper.domain.Tag;
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Data
-public class NoteResponse {
-    private long id;
+public class NoteRequest {
     private String subject;
     private String content;
     private Source source;
     private Set<Tag> tags;
-    private LocalDateTime createdAt;
-    private LocalDateTime editedAt;
 }

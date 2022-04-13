@@ -22,17 +22,17 @@ public class Note {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "created_time")
-    private LocalDateTime createdAt;
-
-    @Column(name = "edited_time")
-    private LocalDateTime editedAt;
-
     @OneToOne (fetch = FetchType.EAGER)
     private Source source;
 
     @OneToMany (fetch = FetchType.EAGER)
     private Set<Tag> tags;
+
+    @Column(name = "created_time")
+    private LocalDateTime createdAt;
+
+    @Column(name = "edited_time")
+    private LocalDateTime editedAt;
 
     @OneToOne (fetch = FetchType.EAGER)
     private User user;

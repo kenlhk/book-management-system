@@ -9,4 +9,8 @@ public interface AuthenticationService {
     Map<String, String> register(User user, String password2);
 
     Map<String, String> login(User user);
+
+    User findCurrentUser();
+
+    Boolean isCurrentUser(User user);
 }
