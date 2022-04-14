@@ -6,7 +6,6 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class LoginRequest {
-
     @NotBlank(message = "Please enter a username.")
     private String username;
 

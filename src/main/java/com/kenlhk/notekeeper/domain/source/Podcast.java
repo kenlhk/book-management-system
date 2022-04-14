@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 @DiscriminatorValue("podcast")
 @Data
 public class Podcast extends Source {
-
     @Column(name = "channel")
     private String channel;
 

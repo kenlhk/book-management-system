@@ -8,7 +8,6 @@ import javax.validation.constraints.Size;
 
 @Data
 public class RegisterRequest {
-
     @NotBlank(message = "Please enter a username.")
     private String username;
 

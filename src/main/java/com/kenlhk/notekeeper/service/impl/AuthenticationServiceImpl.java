@@ -21,7 +21,6 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
-
     private final UserRepository userRepository;
     private final JwtProvider jwtProvider;
     private final PasswordEncoder passwordEncoder;
@@ -29,16 +28,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public Map<String, String> register(User user, String password2) {
-
-        if(!user.getPassword().equals(password2)){
+        if (!user.getPassword().equals(password2)) {
             throw new ApiRequestException("Passwords do not match.", HttpStatus.BAD_REQUEST);
         }
-
-        if(userRepository.findByUsername((user.getUsername())).isPresent()){
+        if (userRepository.findByUsername((user.getUsername())).isPresent()) {
             throw new ApiRequestException("Username is already existed.", HttpStatus.BAD_REQUEST);
         }
-
-        if(userRepository.findByEmail((user.getEmail())).isPresent()){
+        if (userRepository.findByEmail((user.getEmail())).isPresent()) {
             throw new ApiRequestException("Email is already in use.", HttpStatus.BAD_REQUEST);
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -63,7 +59,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             credentials.put("username", user.getUsername());
             credentials.put("token", token);
             return credentials;
-        } catch (AuthenticationException e){
+        } catch (AuthenticationException e) {
             throw new ApiRequestException("Username or password invalid.", HttpStatus.UNAUTHORIZED);
         }
     }

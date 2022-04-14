@@ -10,7 +10,6 @@ import java.util.Set;
 @Table(name = "notes")
 @Data
 public class Note {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "note_id_seq")
     @SequenceGenerator(name="note_id_seq", sequenceName = "note_id_seq", initialValue = 1, allocationSize = 1)
@@ -25,7 +24,7 @@ public class Note {
     @OneToOne (fetch = FetchType.EAGER)
     private Source source;
 
-    @OneToMany (fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Tag> tags;
 
     @Column(name = "created_time")

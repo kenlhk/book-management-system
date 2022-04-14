@@ -1,10 +1,8 @@
 package com.kenlhk.notekeeper.configuration;
 
 import com.kenlhk.notekeeper.security.JwtConfigurer;
-import com.kenlhk.notekeeper.security.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
     private final UserDetailsService userDetailsService;
     private final JwtConfigurer jwtConfigurer;
 

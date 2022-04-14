@@ -11,11 +11,10 @@ import java.util.Collections;
 
 @Data
 public class UserPrincipal implements UserDetails {
-
     private final String username;
     private final String password;
 
-    public static UserPrincipal build(User user){
+    public static UserPrincipal build(User user) {
         return new UserPrincipal(user.getUsername(), user.getPassword());
     }
 

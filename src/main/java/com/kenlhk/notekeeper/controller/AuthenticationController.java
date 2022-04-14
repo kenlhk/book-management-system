@@ -1,9 +1,9 @@
 package com.kenlhk.notekeeper.controller;
 
+import com.kenlhk.notekeeper.dto.authentication.AuthenticationResponse;
 import com.kenlhk.notekeeper.dto.authentication.LoginRequest;
 import com.kenlhk.notekeeper.dto.authentication.RegisterRequest;
-import com.kenlhk.notekeeper.dto.authentication.AuthenticationResponse;
-import com.kenlhk.notekeeper.mapper.AuthenticationMapper;
+import com.kenlhk.notekeeper.dto.mapper.AuthenticationMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +17,6 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
-
     private final AuthenticationMapper authenticationMapper;
 
     @PostMapping("/register")

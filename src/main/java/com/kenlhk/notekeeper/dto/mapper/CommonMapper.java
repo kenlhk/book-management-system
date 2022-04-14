@@ -1,4 +1,4 @@
-package com.kenlhk.notekeeper.mapper;
+package com.kenlhk.notekeeper.dto.mapper;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class CommonMapper {
-
     private final ModelMapper modelMapper;
 
     <T, S> S map(T data, Class<S> type){
