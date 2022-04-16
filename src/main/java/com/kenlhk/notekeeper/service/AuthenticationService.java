@@ -1,6 +1,6 @@
 package com.kenlhk.notekeeper.service;
 
-import com.kenlhk.notekeeper.domain.User;
+import com.kenlhk.notekeeper.model.User;
 
 import java.util.Map;
 

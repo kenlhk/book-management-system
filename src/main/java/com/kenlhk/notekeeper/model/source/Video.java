@@ -1,6 +1,6 @@
-package com.kenlhk.notekeeper.domain.source;
+package com.kenlhk.notekeeper.model.source;
 
-import com.kenlhk.notekeeper.domain.Source;
+import com.kenlhk.notekeeper.model.Source;
 import lombok.Data;
 
 import javax.persistence.Column;

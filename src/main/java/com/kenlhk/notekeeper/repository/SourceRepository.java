@@ -1,6 +1,6 @@
 package com.kenlhk.notekeeper.repository;
 
-import com.kenlhk.notekeeper.domain.Source;
+import com.kenlhk.notekeeper.model.Source;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.kenlhk.notekeeper.security;
 
-import com.kenlhk.notekeeper.domain.User;
+import com.kenlhk.notekeeper.model.User;
 import com.kenlhk.notekeeper.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

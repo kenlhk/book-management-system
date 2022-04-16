@@ -1,4 +1,4 @@
-package com.kenlhk.notekeeper.domain;
+package com.kenlhk.notekeeper.model;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "note_id_seq")
-    @SequenceGenerator(name="note_id_seq", sequenceName = "note_id_seq", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "note_id_seq", sequenceName = "note_id_seq", initialValue = 1, allocationSize = 1)
     private long id;
 
     @Column(name = "subject", length = 256)
@@ -21,7 +21,7 @@ public class Note {
     @Column(name = "content")
     private String content;
 
-    @OneToOne (fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Source source;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -33,10 +33,10 @@ public class Note {
     @Column(name = "edited_time")
     private LocalDateTime editedAt;
 
-    @OneToOne (fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     private User user;
 
-    public Note(){
+    public Note() {
         this.createdAt = LocalDateTime.now();
     }
 }

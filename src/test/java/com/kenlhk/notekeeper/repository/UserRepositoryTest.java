@@ -1,6 +1,6 @@
 package com.kenlhk.notekeeper.repository;
 
-import com.kenlhk.notekeeper.domain.User;
+import com.kenlhk.notekeeper.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -16,12 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(value = false)
 public class UserRepositoryTest {
-
     @Autowired
     private UserRepository userRepository;
 
     @Test
-    public void createUser(){
+    public void createUser() {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword1 = passwordEncoder.encode("test12345");
         String encodedPassword2 = passwordEncoder.encode("test67890");
@@ -37,6 +36,5 @@ public class UserRepositoryTest {
 
         assertNotNull(savedUser2);
         assertTrue(savedUser2.getId() > 0);
-
     }
 }

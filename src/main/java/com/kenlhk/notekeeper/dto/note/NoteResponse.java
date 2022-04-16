@@ -1,7 +1,7 @@
 package com.kenlhk.notekeeper.dto.note;
 
-import com.kenlhk.notekeeper.domain.Source;
-import com.kenlhk.notekeeper.domain.Tag;
+import com.kenlhk.notekeeper.model.Source;
+import com.kenlhk.notekeeper.model.Tag;
 import lombok.Data;
 
 import java.time.LocalDateTime;

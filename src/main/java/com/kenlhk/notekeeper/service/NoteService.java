@@ -1,7 +1,6 @@
 package com.kenlhk.notekeeper.service;
 
-import com.kenlhk.notekeeper.domain.Note;
-import com.kenlhk.notekeeper.domain.Tag;
+import com.kenlhk.notekeeper.model.Note;
 
 import java.util.List;
 
@@ -15,8 +14,4 @@ public interface NoteService {
     Note updateNote(Note note, long id);
 
     void deleteNote(long id);
-
-    Note addTag(Tag tag, long id);
-
-    void removeTag(Tag tag, long id);
 }

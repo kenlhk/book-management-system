@@ -1,7 +1,7 @@
 package com.kenlhk.notekeeper.service.impl;
 
-import com.kenlhk.notekeeper.domain.User;
 import com.kenlhk.notekeeper.exception.ApiRequestException;
+import com.kenlhk.notekeeper.model.User;
 import com.kenlhk.notekeeper.repository.UserRepository;
 import com.kenlhk.notekeeper.security.JwtProvider;
 import com.kenlhk.notekeeper.service.AuthenticationService;

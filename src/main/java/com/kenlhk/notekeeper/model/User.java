@@ -1,4 +1,4 @@
-package com.kenlhk.notekeeper.domain;
+package com.kenlhk.notekeeper.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

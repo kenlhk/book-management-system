@@ -1,20 +1,22 @@
 package com.kenlhk.notekeeper.service.impl;
 
-import com.kenlhk.notekeeper.domain.User;
+import com.kenlhk.notekeeper.model.User;
 import com.kenlhk.notekeeper.repository.UserRepository;
 import com.kenlhk.notekeeper.security.JwtProvider;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.Rollback;
 
 import java.util.Optional;
 
 import static com.kenlhk.notekeeper.util.TestConstants.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
+@Rollback(false)
 class AuthenticationServiceImplTest {
 
     @Autowired

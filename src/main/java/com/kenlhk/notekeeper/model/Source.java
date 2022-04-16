@@ -1,4 +1,4 @@
-package com.kenlhk.notekeeper.domain;
+package com.kenlhk.notekeeper.model;
 
 import lombok.Data;
 
@@ -8,13 +8,17 @@ import javax.persistence.*;
 @Table(name = "sources")
 @Data
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "category")
 public abstract class Source {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "source_id_seq")
-    @SequenceGenerator(name="source_id_seq", sequenceName = "source_id_seq", initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "source_id_seq", sequenceName = "source_id_seq", initialValue = 1, allocationSize = 1)
     private Long id;
 
-    @Column(name = "title")
+    @Column(name = "category", insertable = false, updatable = false)
+    private String category;
+
+    @Column(name = "title", nullable = false)
     private String title;
 
     @Column(name = "author")
