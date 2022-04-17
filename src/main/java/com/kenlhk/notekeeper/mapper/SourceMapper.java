@@ -15,7 +15,7 @@ public class SourceMapper {
     private final SourceService sourceService;
     private final CommonMapper commonMapper;
 
-    public SourceResponse addSource(SourceRequest request, long noteId) {
+    public SourceResponse addSource(SourceRequest request, Long noteId) {
         Source source;
         switch (request.getCategory()) {
             case "article":
@@ -36,5 +36,9 @@ public class SourceMapper {
             default:
                 throw new ApiRequestException("Category not found", HttpStatus.NOT_FOUND);
         }
+    }
+
+    public void removeSource(Long noteId){
+        sourceService.removeSource(noteId);
     }
 }

@@ -7,11 +7,11 @@ import java.util.List;
 public interface NoteService {
     List<Note> findAllNotes();
 
-    Note findNoteById(long id);
+    Note findNoteById(Long noteId);
 
     Note saveNote(Note note);
 
-    Note updateNote(Note note, long id);
+    Note updateNote(Note note, Long noteId);
 
-    void deleteNote(long id);
+    void deleteNote(Long noteId);
 }

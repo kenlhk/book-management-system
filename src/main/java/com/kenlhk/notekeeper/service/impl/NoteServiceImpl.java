@@ -24,8 +24,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Note findNoteById(long id) {
-        Note note = noteRepository.findById(id)
+    public Note findNoteById(Long noteId) {
+        Note note = noteRepository.findById(noteId)
                 .orElseThrow(() -> new ApiRequestException("Note not found.", HttpStatus.NOT_FOUND));
         if (!authenticationService.isCurrentUser(note.getUser())) {
             throw new ApiRequestException("Unauthorized access.", HttpStatus.UNAUTHORIZED);
@@ -40,8 +40,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Note updateNote(Note note, long id) {
-        Note noteFromDb = noteRepository.findById(id)
+    public Note updateNote(Note note, Long noteId) {
+        Note noteFromDb = noteRepository.findById(noteId)
                 .orElseThrow(() -> new ApiRequestException("Note not found.", HttpStatus.NOT_FOUND));
         if (!authenticationService.isCurrentUser(noteFromDb.getUser())) {
             throw new ApiRequestException("Unauthorized access.", HttpStatus.UNAUTHORIZED);
@@ -55,8 +55,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void deleteNote(long id) {
-        Note noteFromDb = noteRepository.findById(id)
+    public void deleteNote(Long noteId) {
+        Note noteFromDb = noteRepository.findById(noteId)
                 .orElseThrow(() -> new ApiRequestException("Note not found.", HttpStatus.NOT_FOUND));
         if (!authenticationService.isCurrentUser(noteFromDb.getUser())) {
             throw new ApiRequestException("Unauthorized access.", HttpStatus.UNAUTHORIZED);

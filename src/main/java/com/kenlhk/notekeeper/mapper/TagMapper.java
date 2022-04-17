@@ -13,12 +13,12 @@ public class TagMapper {
     private final CommonMapper commonMapper;
     private final TagService tagService;
 
-    public TagResponse addTag(TagRequest request, long noteId) {
+    public TagResponse addTag(TagRequest request, Long noteId) {
         Tag tag = commonMapper.map(request, Tag.class);
         return commonMapper.map(tagService.addTag(tag, noteId), TagResponse.class);
     }
 
-    public void removeTag(TagRequest request, long noteId) {
+    public void removeTag(TagRequest request, Long noteId) {
         Tag tag = commonMapper.map(request, Tag.class);
         tagService.removeTag(tag, noteId);
     }

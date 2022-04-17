@@ -3,7 +3,7 @@ package com.kenlhk.notekeeper.service;
 import com.kenlhk.notekeeper.model.Source;
 
 public interface SourceService {
-    Source addSource(Source source, long noteId);
+    Source addSource(Source source, Long noteId);
 
-    void removeSource(long id);
+    void removeSource(Long noteId);
 }

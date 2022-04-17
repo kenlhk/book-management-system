@@ -22,7 +22,7 @@ public class TagServiceImpl implements TagService {
     private final AuthenticationService authenticationService;
 
     @Override
-    public Tag addTag(Tag tag, long noteId) {
+    public Tag addTag(Tag tag, Long noteId) {
         Note note = noteRepository.findById(noteId)
                 .orElseThrow(() -> new ApiRequestException("Note not found.", HttpStatus.NOT_FOUND));
         if (!authenticationService.isCurrentUser(note.getUser())) {
@@ -40,7 +40,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void removeTag(Tag tag, long noteId) {
+    public void removeTag(Tag tag, Long noteId) {
         Note note = noteRepository.findById(noteId)
                 .orElseThrow(() -> new ApiRequestException("Note not found.", HttpStatus.NOT_FOUND));
         if (!authenticationService.isCurrentUser(note.getUser())) {

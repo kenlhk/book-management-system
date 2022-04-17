@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Data
 public class NoteResponse {
-    private long id;
+    private Long id;
     private String subject;
     private String content;
     private Source source;

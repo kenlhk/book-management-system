@@ -29,9 +29,9 @@ public class NoteController {
         return ResponseEntity.ok(noteMapper.findAllNotes());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<NoteResponse> getNoteById(@PathVariable("id") long id) {
-        return ResponseEntity.ok(noteMapper.findNoteById(id));
+    @GetMapping("/{noteId}")
+    public ResponseEntity<NoteResponse> getNoteById(@PathVariable("noteId") Long noteId) {
+        return ResponseEntity.ok(noteMapper.findNoteById(noteId));
     }
 
     @PostMapping("/create")
@@ -39,35 +39,36 @@ public class NoteController {
         return ResponseEntity.ok(noteMapper.saveNote(request));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<NoteResponse> updateNote(@RequestBody NoteRequest request, @PathVariable("id") long id) {
-        return ResponseEntity.ok(noteMapper.updateNote(request, id));
+    @PutMapping("/{noteId}")
+    public ResponseEntity<NoteResponse> updateNote(@RequestBody NoteRequest request, @PathVariable("id") Long noteId) {
+        return ResponseEntity.ok(noteMapper.updateNote(request, noteId));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity deleteNote(@PathVariable("id") long id) {
-        noteMapper.deleteNote(id);
+    @DeleteMapping("/{noteId}")
+    public ResponseEntity deleteNote(@PathVariable("id") Long noteId) {
+        noteMapper.deleteNote(noteId);
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/{id}/tags")
-    public ResponseEntity<TagResponse> addTag(@RequestBody TagRequest request, @PathVariable("id") long noteId) {
+    @PostMapping("/{noteId}/tags")
+    public ResponseEntity<TagResponse> addTag(@RequestBody TagRequest request, @PathVariable("noteId") Long noteId) {
         return ResponseEntity.ok(tagMapper.addTag(request, noteId));
     }
 
-    @DeleteMapping("/{id}/tags")
-    public ResponseEntity removeTag(@RequestBody TagRequest request, @PathVariable("id") long noteId) {
+    @DeleteMapping("/{noteId}/tags")
+    public ResponseEntity removeTag(@RequestBody TagRequest request, @PathVariable("noteId") Long noteId) {
         tagMapper.removeTag(request, noteId);
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping("/{id}/sources")
-    public ResponseEntity<SourceResponse> addSource(@RequestBody SourceRequest request, @PathVariable("id") long noteId) {
+    @PostMapping("/{noteId}/sources")
+    public ResponseEntity<SourceResponse> addSource(@RequestBody SourceRequest request, @PathVariable("noteId") Long noteId) {
         return ResponseEntity.ok(sourceMapper.addSource(request, noteId));
     }
 
-    @DeleteMapping("/{id}/sources")
-    public ResponseEntity removeSource(@PathVariable long noteId) {
-        return ResponseEntity.ok().build();
+    @DeleteMapping("/{noteId}/sources")
+    public ResponseEntity removeSource(@PathVariable("noteId") Long noteId) {
+        sourceMapper.removeSource(noteId);
+        return ResponseEntity.noContent().build();
     }
 }
